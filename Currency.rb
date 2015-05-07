@@ -16,7 +16,7 @@ class Currency
   end
 
   def ==(other_currency)
-    if self.amount == other_currency.amount && self.code == other_currency.code
+    if @amount == other_currency.amount && @code == other_currency.code
       return true
     else
       raise DifferentCurrencyCodeError, "Different Currencies"
@@ -24,18 +24,26 @@ class Currency
   end
 
   def +(other_currency)
-    if self.code == other_currency.code
-      return self.amount + other_currency.amount
+    if @code == other_currency.code
+      return @amount + other_currency.amount
     else
       raise DifferentCurrencyCodeError, "Cannot add different Currencies"
     end
   end
 
   def -(other_currency)
-    if self.code == other_currency.code
-      return self.amount - other_currency.amount
+    if @code == other_currency.code
+      return @amount - other_currency.amount
     else
       raise DifferentCurrencyCodeError, "Cannot subtract different Currencies"
     end
   end
+
+  def *(num)
+    if num.class == Fixnum || num.class == Float
+      @amount = @amount * num
+      return self
+    end
+  end
+
 end

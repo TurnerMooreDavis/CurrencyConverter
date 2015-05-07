@@ -9,4 +9,4 @@ p us_dollar.code
 
 
 
-puts  more_dollar - us_dollar
+puts  more_dollar * 5
