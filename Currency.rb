@@ -27,4 +27,12 @@ class Currency
       return false
     end
   end
+
+  def -(other_currency)
+    if self.code == other_currency.code
+      return self.amount - other_currency.amount
+    else
+      return false
+    end
+  end
 end
