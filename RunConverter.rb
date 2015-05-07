@@ -7,8 +7,4 @@ p us_dollar
 p us_dollar.amount
 p us_dollar.code
 
-if us_dollar == more_dollar
-  puts "true"
-else
-  puts "false"
-end
+puts us_dollar + more_dollar
