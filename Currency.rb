@@ -1,7 +1,17 @@
 class Currency
   def initialize(amount = 0,code = 000)
-    @amount = amount.to_f
-    @code = code.upcase
+    if code == 000
+      input = amount.split("")
+      symbol = input[0]
+      currency_symbols = {"$" => "USD", "€" => "EUR", "¥" => "CNY", "£" => "GBP","₽" => "RUB", "₱" => "MXN"}
+      if currency_symbols.has_key?(symbol)
+        @code = currency_symbols[symbol]
+      @amount = input[1..-1].join.to_f
+      end
+    else
+      @amount = amount.to_f
+      @code = code.upcase
+    end
   end
 
   class DifferentCurrencyCodeError < Exception
