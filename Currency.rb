@@ -4,6 +4,9 @@ class Currency
     @code = code.upcase
   end
 
+  class DifferentCurrencyCodeError < Exception
+  end
+
   def amount
     amount = @amount
   end
@@ -16,7 +19,7 @@ class Currency
     if self.amount == other_currency.amount && self.code == other_currency.code
       return true
     else
-      return false
+      raise DifferentCurrencyCodeError, "Different Currencies"
     end
   end
 
@@ -24,7 +27,7 @@ class Currency
     if self.code == other_currency.code
       return self.amount + other_currency.amount
     else
-      return false
+      raise DifferentCurrencyCodeError, "Cannot add different Currencies"
     end
   end
 
@@ -32,7 +35,7 @@ class Currency
     if self.code == other_currency.code
       return self.amount - other_currency.amount
     else
-      return false
+      raise DifferentCurrencyCodeError, "Cannot subtract different Currencies"
     end
   end
 end
