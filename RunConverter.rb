@@ -13,3 +13,4 @@ usd_conversion = CurrencyConverter.new({"USD" => 1.00, "EUR" => 0.89, "CNY" => 6
 p usd_conversion.convert(euro, "EUR")
 p usd_conversion.convert(us_dollar, "EUR")
 p usd_conversion.convert(yen, "EUR")
+p usd_conversion.convert(yen, "YCN")
