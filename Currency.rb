@@ -6,7 +6,7 @@ class Currency
       currency_symbols = {"$" => "USD", "€" => "EUR", "¥" => "CNY", "£" => "GBP","₽" => "RUB", "₱" => "MXN"}
       if currency_symbols.has_key?(symbol)
         @code = currency_symbols[symbol]
-      @amount = input[1..-1].join.to_f
+        @amount = input[1..-1].join.to_f
       end
     else
       @amount = amount.to_f
@@ -51,8 +51,7 @@ class Currency
 
   def *(num)
     if num.class == Fixnum || num.class == Float
-      @amount = @amount * num
-      return self
+      return Currency.new(@amount*num,@code)
     end
   end
 
