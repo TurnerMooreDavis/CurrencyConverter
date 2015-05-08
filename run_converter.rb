@@ -1,6 +1,6 @@
-require "./Currency.rb"
-require "./CurrencyConverter.rb"
-require "./CurrencyTrader.rb"
+require "./currency.rb"
+require "./currency_converter.rb"
+require "./currency_trader.rb"
 us_dollar = Currency.new(350,"USD")
 euro = Currency.new("€900")
 yen = Currency.new(400, "CNY")
