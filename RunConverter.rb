@@ -1,5 +1,6 @@
 require "./Currency.rb"
 require "./CurrencyConverter.rb"
+require "./CurrencyTrader.rb"
 us_dollar = Currency.new(350,"USD")
 euro = Currency.new("€900")
 yen = Currency.new(400, "CNY")
@@ -10,7 +11,7 @@ yen = Currency.new(400, "CNY")
 
 
 usd_conversion = CurrencyConverter.new({"USD" => 1.00, "EUR" => 0.89, "CNY" => 6.20})
-p usd_conversion.convert(euro, "EUR")
-p usd_conversion.convert(us_dollar, "EUR")
-p usd_conversion.convert(yen, "EUR")
-p usd_conversion.convert(yen, "YCN")
+usd_conversion_later = CurrencyConverter.new({"USD" => 1.00, "EUR" => 0.95, "CNY" => 10.20})
+
+trade = CurrencyTrader.new(usd_conversion,usd_conversion_later,us_dollar)
+trade.suggest_investment
