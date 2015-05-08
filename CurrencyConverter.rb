@@ -17,8 +17,10 @@ class CurrencyConverter
   def convert (currency, code)
     if currency.code == code
       return currency
-    else
+    elsif conversion_ratios[currency.code] == 1.00
       return Currency.new(currency.amount*@conversion_ratios[code],code)
+    else
+      return (currency.amount) / (conversion_ratios[currency.code])*(conversion_ratios[code])
     end
   end
 
