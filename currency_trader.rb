@@ -13,12 +13,21 @@ class CurrencyTrader
   end
 
   def suggest_investment
-    differences = []
+    differences = {}
     @first_converter.conversion_ratios.each do |c|
       code = c[0]
-      differences << (@second_converter.conversion_ratios[code]/c[1])
+      differences[code] = (@second_converter.conversion_ratios[code]/c[1])
     end
-    puts differences
+    max_name = ""
+    max = 0
+    differences.each do |d|
+      if d[1] > max
+        max = d[1]
+        max_name = d[0]
+      end
+    end
+    max *= 100
+    puts "your best investment will be #{max_name} for a #{max}% increase in investment"
   end
 
 end
