@@ -13,4 +13,13 @@ class CurrencyConverter
   def conversion_ratios
     conversion_ratios = @conversion_ratios
   end
+
+  def convert (currency, code)
+    if currency.code == code
+      return currency
+    else
+      return false
+    end
+  end
+
 end
