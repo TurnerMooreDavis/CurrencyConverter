@@ -14,16 +14,16 @@ class CurrencyConverter
   end
 
   def conversion_ratios
-    conversion_ratios = @conversion_ratios
+    @conversion_ratios
   end
 
   def convert (currency, code)
     if currency.code == code
       return currency
-    elsif conversion_ratios[currency.code] == 1.00
+    elsif @conversion_ratios[currency.code] == 1.00
       return Currency.new(currency.amount*@conversion_ratios[code],code)
-    elsif conversion_ratios.include?(currency.code) && conversion_ratios.include?(code)
-      return (currency.amount) / (conversion_ratios[currency.code])*(conversion_ratios[code])
+    elsif @conversion_ratios.include?(currency.code) && @conversion_ratios.include?(code)
+      return (currency.amount) / (@conversion_ratios[currency.code])*(@conversion_ratios[code])
     else
       raise UnknownCurrencyCodeError, "No conversion ratio"
     end
