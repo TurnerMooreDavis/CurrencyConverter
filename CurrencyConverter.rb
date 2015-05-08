@@ -18,7 +18,7 @@ class CurrencyConverter
     if currency.code == code
       return currency
     else
-      return false
+      return Currency.new(currency.amount*@conversion_ratios[code],code)
     end
   end
 
